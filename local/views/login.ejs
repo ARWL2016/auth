@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+  <title>Passport Local</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+  <form 
+    name="signInForm"
+    action="auth/signIn"
+    method="post"
+    class="authForm">
+    <h2>Sign In</h2>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="enter your username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="enter your password">
+    </div>
+    <input type="submit"> 
+  </form>
+
+  <form 
+    name="register"
+    action="auth/register"
+    method="post"
+    class="authForm">
+    <h2>Register</h2>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="enter your username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="enter your password">
+    </div>
+    <input type="submit"> 
+  </form>
+  <p>Status: <%= status %></p>
+</body>
