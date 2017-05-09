@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+  <div class="userProfile"> 
+    <p><b>User:</b> <%= user %> | <b>P/W:</b> <%= password %> | <b>ID:</b> <%= id %>  </p>
+    <p><b>Status</b> <%= status %></p>
+
+    <form 
+      name="logout"
+      action="/auth/logout"
+      method="post"> 
+      <input type="submit" value="Logout" /> 
+    </form>
+  </div>
+
+  <form 
+    name="changePassword"
+    action="auth/update"
+    method="post"
+    class="authForm">
+    <h2>Change Your Password</h2>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="enter your username">
+    </div>
+    <div>
+      <label for="password">New Password</label>
+      <input type="text" name="password" placeholder="enter a new password">
+    </div>
+    <input type="submit"> 
+  </form>
+
+</body>
