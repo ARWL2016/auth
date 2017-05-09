@@ -25,10 +25,15 @@ app.get('/foo', (req, res, next) => {
   fooVisits +=1; 
   req.session.fooVisits = fooVisits; 
 
+  let appLocalVisits = app.locals.visits || 0; 
+  appLocalVisits +=1; 
+  app.locals.visits = appLocalVisits; 
+
   let path = parseurl(req).path; 
   res.json({
     session: req.session, 
     id: req.sessionID, 
+    appLocalVisits: app.locals.visits
   }); 
 
 });
