@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, Helvetica, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+}
+
+.authForm {
+  padding: 15px; 
+  background-color: #EEEEEE;
+  width: 300px; 
+}
+
+.authForm input[type="text"] {
+  height: 30px; 
+  width: 200px; 
+  margin: 5px; 
+  padding: 5px; 
+  display: block; 
+}
+
+.authForm input[type="submit"] {
+  width: 100px; 
+  height: 30px; 
+  padding: 5px; 
+  margin: 5px; 
+}
+
+.authForm div {
+  margin-top: 15px; 
+}
+
+.userProfile {
+  padding: 15px; 
+  margin: 0px; 
+  background-color: lightblue; 
+  
+}
+
+.userProfile input[type="submit"] {
+  width: 100px; 
+  height: 30px; 
+  padding: 5px; 
+  margin: 5px; 
+}
