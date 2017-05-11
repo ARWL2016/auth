@@ -26,7 +26,11 @@ module.exports = (app) => {
     }
     if (!user) {
       console.log('auth error - no user');
-      return done(null, false); 
+      return done(null, false, { type: 'error', message: 'User not found' }); 
+    }
+    if (user.password !== password) {
+      // console.log('incorrect password'); 
+      return done(null, false, { type: 'error', message: 'Invalid password.' }); 
     }
     console.log('no error'); 
     return done(null, user); 

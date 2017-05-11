@@ -1,18 +1,16 @@
 'use strict'; 
 const Chalk = require('chalk'); 
-
 const mongoose = require('mongoose'); 
+const { mlabURI } = require('../config'); 
 
-const dbURI = 'mongodb://localhost/passport-local'; 
-
-mongoose.connect(dbURI); 
+mongoose.connect(mlabURI); 
 
 mongoose.connection.on('connected', () => {
-  console.log(Chalk.green('mongoose connected to: ' + dbURI)); 
+  console.log(Chalk.green('mongoose connected to: ' + mlabURI)); 
 }); 
 
 mongoose.connection.on('error', (err) => {
-  console.log(Chalk.red('mongoose connection error: ' + error)); 
+  console.log(Chalk.red('mongoose connection error: ' + err)); 
 }); 
 
 const UserSchema = new mongoose.Schema({
