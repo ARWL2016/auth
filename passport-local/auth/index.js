@@ -32,7 +32,7 @@ module.exports = (app) => {
       if (user.password !== password) {
         return done(null, false, { type: 'error', message: 'Invalid password.' }); 
       }
-      return done(null, user, {type: 'success', message: 'You have successfully logged in.'}); 
+      return done(null, user, {type: 'success', message: 'Logged in as '}); 
     })
   }
   ));

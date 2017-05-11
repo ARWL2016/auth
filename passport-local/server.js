@@ -23,58 +23,7 @@ require('./auth')(app);
 
 app.set('view engine', 'ejs'); 
 
-
-
-
-// *** ROUTES *** 
-app.get('/', (req, res) => {
-  console.log(req.flash.message); 
-  res.render('login', {
-    error: req.flash('error')
-  });
-}); 
-
-app.post('/register', (req, res) => {
-  console.log(req.body); 
-  if(req.body.username && req.body.password) {
-    User.create(req.body, (err, data) => {
-      if (err) {
-        console.log(err); 
-      }
-      else {
-        res.redirect('/'); 
-      }  
-    })
-  } else {
-    res.redirect('/'); 
-  }
-});  
-
-app.post('/login', passport.authenticate('local', {
-  failureFlash: true, 
-  successFlash: true,
-  successRedirect: '/profile', 
-  failureRedirect: '/login' 
-}));  
-
-app.get('/login', (req, res) => {
-  let error = req.flash('error')[0];   
-  res.render('login', {
-    error: error
-  })
-})
-
-app.get('/profile', (req, res) => {
-  console.log('GET profile', req.user); 
-  let success = req.flash('success'); 
-  res.render('profile', {
-    success: success
-  });
-});
-
-app.post('/logout', (req, res) => {
-  res.redirect('/'); 
-});
+require('./routes')(app, passport, User); 
 
 app.listen(3000, () => {
   console.log('Listening on Port 3000'); 
