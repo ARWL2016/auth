@@ -3,6 +3,7 @@ const Chalk = require('chalk');
 const mongoose = require('mongoose'); 
 const { mlabURI } = require('../config'); 
 
+mongoose.Promise = global.Promise;
 mongoose.connect(mlabURI); 
 
 mongoose.connection.on('connected', () => {

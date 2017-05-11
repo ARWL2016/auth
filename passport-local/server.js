@@ -34,14 +34,6 @@ app.get('/', (req, res) => {
   });
 }); 
 
-app.get('/profile', (req, res) => {
-  res.render('profile');
-}); 
-
-app.post('/logout', (req, res) => {
-  res.redirect('/'); 
-}); 
-
 app.post('/register', (req, res) => {
   console.log(req.body); 
   if(req.body.username && req.body.password) {
@@ -58,20 +50,31 @@ app.post('/register', (req, res) => {
   }
 });  
 
+app.post('/login', passport.authenticate('local', {
+  failureFlash: true, 
+  successFlash: true,
+  successRedirect: '/profile', 
+  failureRedirect: '/login' 
+}));  
+
 app.get('/login', (req, res) => {
-  let error = req.flash('error')[0]; 
-  console.log('LOGIN', error); 
-  
+  let error = req.flash('error')[0];   
   res.render('login', {
     error: error
   })
 })
 
-app.post('/login', passport.authenticate('local', {
-  failureFlash: true, 
-  successRedirect: '/profile', 
-  failureRedirect: '/login' 
-}));  
+app.get('/profile', (req, res) => {
+  console.log('GET profile', req.user); 
+  let success = req.flash('success'); 
+  res.render('profile', {
+    success: success
+  });
+});
+
+app.post('/logout', (req, res) => {
+  res.redirect('/'); 
+});
 
 app.listen(3000, () => {
   console.log('Listening on Port 3000'); 
