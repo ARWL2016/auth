@@ -17,7 +17,7 @@ module.exports = (app, passport, User) => {
         User.create(req.body)
           .then(() => res.render('login', {
               error: null, 
-              success: 'Thanks for registering. Please login.'
+              success: m.m1
             })
           )
           .catch(err => console.log(err)); 
@@ -31,23 +31,23 @@ module.exports = (app, passport, User) => {
   app.route('/login')
     .post(passport.authenticate('local', {
         failureFlash: true, 
-        successFlash: true,
         successRedirect: '/profile', 
         failureRedirect: '/login' 
       }))
     .get((req, res) => {
+      if (req.isAuthenticated()) {
+        res.redirect('/profile')
+      } else {
         let error = req.flash('error')[0];   
-        res.render('login', { error, success: null })
-      })
+        res.render('login', { error, success: null });
+      }    
+    })
 
   app.get('/profile', (req, res) => { 
     if (req.isAuthenticated()) {
-      res.render('profile', {
-        success: req.flash('success'), 
-        user: req.user
-      });
+      res.render('profile', { user: req.user });
     } else {
-        res.redirect('/'); 
+      res.redirect('/'); 
     }
   });
 
@@ -55,7 +55,7 @@ module.exports = (app, passport, User) => {
     req.logout(); 
     res.render('login', {
       error: null, 
-      success: 'You have successfully logged out.'
+      success: m.m2
     }); 
   });
 }

@@ -25,12 +25,9 @@ const UserSchema = new mongoose.Schema({
   }
 }); 
 
-// the Schema defines the data structure 
-// the model is an object to interact with the db 
-// model + schema + collection = here 'user' will become 'users'
-const UserModel = mongoose.model('user', UserSchema); 
+const User = mongoose.model('user', UserSchema); 
 
 module.exports = {
   mongoose, 
-  UserModel
+  User
 }

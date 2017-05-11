@@ -1,3 +1,5 @@
 {
-  "e1": "Please enter a username and password to register."
+  "e1": "Please enter a username and password to register.",
+  "m1": "Thanks for registering. Please login.", 
+  "m2": "You have successfully logged out."
 }
