@@ -18,7 +18,8 @@ body {
   display: block; 
 }
 
-.authForm input[type="submit"] {
+.authForm input[type="submit"], 
+.authForm input[type="button"] {
   width: 100px; 
   height: 30px; 
   padding: 5px; 
@@ -41,4 +42,8 @@ body {
   height: 30px; 
   padding: 5px; 
   margin: 5px; 
+}
+
+div.error {
+  color: red; 
 }

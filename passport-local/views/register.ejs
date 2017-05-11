@@ -3,17 +3,17 @@
 <head> 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-  <title>Login Page</title>
+  <title>Registration</title>
   <link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
   <form 
-    name="login"
-    action="/login"
+    name="register"
+    action="register"
     method="post"
     class="authForm">
-    <h2>Sign In</h2>
+    <h2>Register</h2>
     <div>
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="enter your username">
@@ -23,9 +23,8 @@
       <input type="text" name="password" placeholder="enter your password">
     </div>
     <input type="submit"> 
-    <div> <a href="/register">Register here</a></div>
+    <a href="/login"><input type="button" value="Cancel"></input></a>
     <div class="error"><%= error %></div>
-    <div class="success"><%= success %></div>
   </form>
 
 </body>
