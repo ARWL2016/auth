@@ -13,7 +13,10 @@ app.use(session({
   secret: 'anyoldstring', 
   resave: false, 
   saveUninitialized: true, 
-  store: new MongoStore({ mongooseConnection: mongoose.connection })  
+  store: new MongoStore({ mongooseConnection: mongoose.connection }), 
+  cookie: {
+    maxAge: 1000 * 30
+  } 
 }));
 
 app.get('/', (req, res, next) => {
